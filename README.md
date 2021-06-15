@@ -16,7 +16,7 @@ sudo crontab -e
 Et y inserrer la ligne suivante 
 
 ```
-* * * * 5 sudo bash /EMPLACEMENT/ph-hot
+*/5 * * * * sudo bash /EMPLACEMENT/ph-hot
 ```
 En oublient pas de remplacer "EMPLACEMENT" par le chemin d'accès du script
 Ce qui va permettre une exécution du script toutes les 5 minutes (vous pouvez définir l'intervalle de temps qui vous convient).
