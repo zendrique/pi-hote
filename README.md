@@ -16,7 +16,7 @@ sudo crontab -e
 Et y inserrer la ligne suivante 
 
 ```
-*/5 * * * * sudo bash /EMPLACEMENT/ph-hot
+*/5 * * * * sudo bash /EMPLACEMENT/ph-hot.sh >> /dev/null
 ```
 En oublient pas de remplacer "EMPLACEMENT" par le chemin d'accès du script
 Ce qui va permettre une exécution du script toutes les 5 minutes (vous pouvez définir l'intervalle de temps qui vous convient).
@@ -43,3 +43,16 @@ Lien de votre webhooks discord
 
 shutdowncmd="poweroff" :
 Commande d'arrêt du système, à adapter selon votre utilisation.
+
+# Autre
+Il est possible d'obtenir la température du Raspberry Pi en ajoutant l'argument ```--manual```
+Cela va vous permettre d'obtenir la température de votre Raspberry Pi directement sans que les conditions de surchauffe ne sois remplie.
+Je recommande d'effectuer cette action de manière manuelle pour vérifier le bon fonctionnement du système.
+
+## Remaque
+Cette option ne déclenche en aucun cas les procédures définit en cas de surchauffe !
+
+## Ligne de démarrage
+```
+sudo bash /EMPLACEMENT/pi-hot.sh --manual
+```
