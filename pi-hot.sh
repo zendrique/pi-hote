@@ -22,7 +22,7 @@ else
 fi
 
 function getip {
-    ip="$(curl -s https://api.ipify.org)"
+    ip=$(curl -s https://api.ipify.org)
 }
 
 exit 0
