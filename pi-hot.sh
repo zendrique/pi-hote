@@ -6,6 +6,10 @@ shutdowncmd="poweroff"
 temp="$(vcgencmd measure_temp | egrep -o '[0-9]*\.[0-9]*')"
 arg=$1
 
+function getip {
+    ip=$(curl -s https://api.ipify.org)
+}
+
 # Programme
 if [ "$1" = "--manual" ] ; then
     getip
@@ -18,11 +22,7 @@ elif (( $(echo "$temp >= $warn_temp" |bc -l) )); then
     getip
     curl -H "Content-Type: application/json" -d '{"username": "Raspberry Pi", "content": "'"J'ai chaud ! \nMa température est de : $temp °C. \nMon ip est : $ip"'"}' $webhooks_url
 else
-    echo "RAS"
+    echo "[PI-HOT] : RAS"
 fi
-
-function getip {
-    ip=$(curl -s https://api.ipify.org)
-}
 
 exit 0
